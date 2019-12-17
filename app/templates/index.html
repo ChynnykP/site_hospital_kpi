@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Medical</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/section_introduction.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/section_main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/section_image.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+</head>
+
+<body>
+<header class="header">
+    <span class="header_1"><b>Hot News!</b> <span>Lorem ipsum dolar set atment</span></span>
+    <span class="header_2"><span>📱</span>+38-068-382-30-44</span>
+    {% if current_user.is_anonymous %}
+        <a class="register" href={{ url_for("register") }}>REGISTER</a>
+        <a class="login" href={{ url_for("login") }}>LOGIN</a>
+    {% else %}
+        <a class="register" href={{ url_for("cabynet") }}>CABYNET</a>
+        <a class="login" href={{ url_for("logout") }}>LOGOUT</a>
+    {% endif %}
+</header>
+<div class="wrapper">
+    <input type="checkbox" id="check-menu">
+    <label class="for_wrapper" for="check-menu"></label>
+    <div class="burger-line first"></div>
+    <div class="burger-line second"></div>
+    <div class="burger-line third"></div>
+    <div class="burger-line fourth"></div>
+    <nav class="main-menu">
+        <a class="elem_menu" href={{ url_for('index') }}>HOME</a>
+        <a class="elem_menu" href="service.html">SERVICES</a>
+        <a class="elem_menu" href="about.html">ABOUT</a>
+        <a class="elem_menu" href="blog.html">BLOG</a>
+        <a class="elem_menu" href="pages.html">PAGES</a>
+        <a class="elem_menu" href="make_appoinment.html">MAKE APPOINTMENT</a>
+    </nav>
+</div>
+<nav class="navigation">
+    <a class="nav_0" href={{ url_for('index') }}><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
+    <a class="nav_all nav_1" href={{ url_for('index') }}>HOME</a>
+    <a class="nav_all nav_2" href="service.html">SERVICES</a>
+    <a class="nav_all nav_3" href="about.html">ABOUT</a>
+    <a class="nav_all nav_4" href="blog.html">BLOG</a>
+    <a class="nav_all nav_5" href="pages.html">PAGES</a>
+    <a class="nav_6" href="make_appoinment.html">MAKE APPOINTMENT</a>
+</nav>
+<section class="section_introduction">
+    <p class="title sec_1">WE PROVIDE</p>
+    <p class="sub-title sec_2">Medical Services</p>
+    <p class="sec_3">Lorem ipsum dolor sit amet, comsectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut
+        labore et
+        dolore magna aliqua. Ut enim aliquam quaerat voluptatem.</p>
+    <button class="button sec_4">READ MORE</button>
+</section>
+<section class="section_main">
+    <div class="box box1">
+        <span class="spec_symbol">💊</span>
+        <hr>
+        Medicine & DrugStore
+    </div>
+    <div class="box box2">
+        <span class="spec_symbol">🦷</span>
+        <hr>
+        Dental Surgery operation
+    </div>
+    <div class="box box3">
+        <span class="spec_symbol">❤</span>
+        <hr>
+        Speacial Health Care
+    </div>
+    <div class="box box4">
+        <span class="spec_symbol">💉</span>
+        <hr>
+        Operation Section
+    </div>
+    <div class="box box5">
+        <span class="spec_symbol">🦷</span>
+        <hr>
+        Dental Surgery operation
+    </div>
+    <div class="box box6">
+        <span class="spec_symbol">🏥</span>
+        <hr>
+        Speacial Chech up
+    </div>
+    <form class="box7 form">
+        <h2>make an appoinment</h2>
+        <h5>fill form & send me</h5>
+        <select name="region" value="Select country">
+            <option value="Kyiv">Kyiv</option>
+            <option value="Cherkasy">Cherkasy</option>
+            <option value="Zhytomyr">Zhytomyr</option>
+            <option value="Rivne">Rivne</option>
+            <option value="Volynska">Volynska</option>
+            <option value="Lviv">Lviv</option>
+            <option value="Zaporizhia">Zaporizhia</option>
+        </select>
+        <select name="service" value="Select service">
+            <option value="Dentist">Dentist</option>
+            <option value="Otolaryngologist">Otolaryngologist</option>
+            <option value="Therapist">Therapist</option>
+            <option value="The addict">The addict</option>
+            <option value="Psychologist">Psychologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Cardiologist">Cardiologist</option>
+        </select>
+        <select name="doctor" value="Select doctor">
+            <option value="Orlov">Orlov</option>
+            <option value="Petrov">Petrov</option>
+            <option value="Ivanov">Ivanov</option>
+            <option value="Chuyko">Chuyko</option>
+            <option value="Shurik">Shurik</option>
+            <option value="Hayduk">Hayduk</option>
+            <option value="Mozhyn">Mozhyn</option>
+        </select>
+        <input value="Choose date" pattern="Select time" type="date">
+        <input type="time" value="Select time">
+        <p>All Fields With an Are Requiremed ***</p>
+        <button>submit toy requirements</button>
+    </form>
+</section>
+<section class="section_image">
+    <div>
+        <p><span class="spec_word">HEALTH</span> CARE PROJECTS</p>
+        <hr>
+        <ul>
+            <li>All</li>
+            <li>PROJECTS</li>
+            <li>HEALTHCARE</li>
+            <li>OPERATIONS</li>
+            <li>DRUGS SOLTIONS</li>
+        </ul>
+        <div class="photo">
+            <div class="div_1"></div>
+            <div class="div_2"></div>
+            <div class="div_3"></div>
+            <div class="div_4"></div>
+            <div class="div_5"></div>
+            <dvi class="div_6"></dvi>
+            <div class="div_7"></div>
+            <div class="div_8"></div>
+            <div class="div_9"></div>
+            <div class="div_0"></div>
+        </div>
+        <button class="button">ALL PROJECTS</button>
+    </div>
+</section>
+<article class="article">
+    <div class="art_1">
+        <h3><span class="spec_word">OUR</span> LATEST NEWS</h3>
+    </div>
+    <div class="art_2">
+        <img src="../static/img/img_1.jpeg" alt="There will be image">
+        <p>There will be text</p>
+    </div>
+    <div class="art_3">
+        <img src="./static/img/img_2.jpeg" alt="There will be image">
+        <p>There will be text</p>
+    </div>
+    <div class="art_4">
+        <h3><span class="spec_word">VIDEO</span> INTRODUCTION</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/upTj79dRmZk" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        <div></div>
+    </div>
+    <div class="art_5">
+        <img src="./static/img/farmers_market.png"></img>
+    </div>
+    <div class="art_6">
+        <img src="./static/img/farmers_market.png"></img>
+    </div>
+    <div class="art_7">
+        <img src="./static/img/farmers_market.png"></img>
+    </div>
+    <div class="art_8">
+        <img src="./static/img/farmers_market.png"></img>
+    </div>
+</article>
+<footer class="footer">
+    <div class="footer_1">
+        <h3><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></h3>
+        <p>This is Photoshop's vesion of Lorem um. sProin gravida nibh vel ivelit aur aliquet. Aenean sollici his a
+            great justo</p>
+        <div></div>
+    </div>
+    <div class="footer_2">
+        <h3><span class="spec_word">QUICK</span>LINKS</h3>
+        <ul>
+            <li><a href=""> Healthcare Programe</a></li>
+            <li><a href=""> Family Treatment</a></li>
+            <li><a href=""> Medical Injuries</a></li>
+            <li><a href=""> Personal Doctor</a></li>
+            <li><a href=""> Operations</a></li>
+        </ul>
+        <div></div>
+    </div>
+    <div class="footer_3">
+        <h3><span class="spec_word">CONTACT</span>US</h3>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255);">⌂</span> Elizabeth St, Melbourne, Victo</p>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255);">✉</span> chynny@vivaldi.net</p>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255)">📱</span>+38-068-382-30-44</p>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255)">📱</span>+38-068-382-30-44</p>
+    </div>
+    <div class="footer_4">
+        <h3><span class="spec_word">WORKING</span>HOURS</h3>
+        <div>
+            <p>Monday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Tuesday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Wednesday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Thursday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Friday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Saturday </p>
+            <p>9:00 am - 8:00 pm</p>
+        </div>
+    </div>
+    <div class="footer_5">
+        <span>UiFuse.com 2015,All Rights Reserved</span>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact_us.html">Contact us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+.article{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "art_1 art_1 art_4 art_4"
+    "art_2 art_2 art_4 art_4"
+    "art_3 art_3 art_4 art_4"
+    "art_5 art_6 art_7 art_8";
+    margin-top: 35px;
+}
+
+.art_1 {
+    grid-area: art_1;
+    text-align: center;
+    font-size: 30px;
+}
+
+.art_2 {
+    grid-area: art_2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.art_3 {
+    grid-area: art_3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.art_4 {
+    grid-area: art_4;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    align-items: center;
+    font-size: 30px;
+}
+
+.art_5 {
+    grid-area: art_5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.art_5 > img {
+    width: 200px;
+    height: 100px;
+}
+
+.art_6 {
+    grid-area: art_6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.art_6 > img {
+    width: 200px;
+    height: 100px;
+}
+
+.art_7 {
+    grid-area: art_7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.art_7 > img {
+    width: 200px;
+    height: 100px;
+}
+
+.art_8 {
+    grid-area: art_8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.art_8 > img {
+    width: 200px;
+    height: 100px;
+}

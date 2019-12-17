@@ -1,0 +1,107 @@
+.footer {
+    border-top:  rgb(0, 119, 255) solid 2px;
+    display: grid;
+    grid-template-columns: 10% repeat(4, 20%) 10%;
+    grid-template-rows: 1fr 25%;
+    grid-column-gap: 2vw;
+    grid-template-areas: 
+    ". footer_1 footer_2 footer_3 footer_4 ."
+    ". footer_5 footer_5 footer_5 footer_5 .";
+    margin-top: 35px;
+    padding-top: 20px;
+    background: rgb(27, 29, 25);
+    color: white;
+}
+
+.footer > div > h3{
+    font-size: 25px;
+}
+
+.footer_1
+{
+    grid-area: footer_1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer_2
+{
+    grid-area: footer_2;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer_2 > ul{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    list-style-type: "\003E";
+    list-style-position: inside;
+    color: rgb(0, 119, 255);
+}
+
+.footer_2 > ul > li{
+    padding: 10px;
+}
+
+
+.footer_2 > ul li > a{
+    color: white;
+    text-decoration: none;
+
+}
+
+.footer_3
+{
+    grid-area: footer_3;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer_4
+{
+    grid-area: footer_4;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer_4>div{
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+.footer_5
+{
+    grid-area: footer_5;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    /* background-color:  rgb(19, 20, 17); */
+    color: rgb(167, 165, 165);
+}
+
+.footer_5 > div > a{
+    color: rgb(167, 165, 165);
+    text-decoration: none;
+}
+
+/*@media (max-width: 1550px){*/
+/*    .footer_4 > div > table{*/
+/*        display: block;*/
+/*    }*/
+/*}*/

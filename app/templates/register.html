@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/register.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/header.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/index.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/nav.css') }}>
+    <link rel="stylesheet" href={{ "../static/css/section_introduction.css" }}>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+</head>
+<body>
+<header class="header">
+    <span class="header_1"><b>Hot News!</b> <span>Lorem ipsum dolar set atment</span></span>
+    <span class="header_2"><span>📱</span>+38-068-382-30-44</span>
+    <a class="register" href={{ url_for("register") }}>REGISTER</a>
+    <a class="login" href={{ url_for("login") }}>LOGIN</a>
+</header>
+<div class="wrapper">
+    <input type="checkbox" id="check-menu">
+    <label for="check-menu"></label>
+    <div class="burger-line first"></div>
+    <div class="burger-line second"></div>
+    <div class="burger-line third"></div>
+    <div class="burger-line fourth"></div>
+    <nav class="main-menu">
+        <a class="elem_menu" href="home.html">HOME</a>
+        <a class="elem_menu" href="service.html">SERVICES</a>
+        <a class="elem_menu" href="about.html">ABOUT</a>
+        <a class="elem_menu" href="blog.html">BLOG</a>
+        <a class="elem_menu" href="pages.html">PAGES</a>
+        <a class="elem_menu" href="make_appoinment.html">MAKE APPOINTMENT</a>
+    </nav>
+</div>
+<nav class="navigation">
+    <a class="nav_0" href="home.html"><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
+    <a class="nav_all nav_1" href={{ url_for("index") }}>HOME</a>
+    <a class="nav_all nav_2" href="service.html">SERVICES</a>
+    <a class="nav_all nav_3" href="about.html">ABOUT</a>
+    <a class="nav_all nav_4" href="blog.html">BLOG</a>
+    <a class="nav_all nav_5" href="pages.html">PAGES</a>
+    <a class="nav_6" href="make_appoinment.html">MAKE APPOINTMENT</a>
+</nav>
+
+<div class="form">
+    <h1>Register</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p class="first_name">
+            {{ form.firstname.label }}<br>
+            {{ form.firstname(size=45) }}<br>
+            {% for error in form.firstname.errors %}
+                <p style="color: red;">[{{ error }}]</p>
+            {% endfor %}
+        </p>
+        <p class="last_name">
+            {{ form.lastname.label }}<br>
+            {{ form.lastname(size=45) }}<br>
+            {% for error in form.lastname.errors %}
+                <p style="color: red;">[{{ error }}]</p>
+            {% endfor %}
+        </p>
+        <p class="email">
+            {{ form.email.label }}<br>
+            {{ form.email(size=45) }}<br>
+            {% for error in form.email.errors %}
+                <p style="color: red;">[{{ error }}]</p>
+            {% endfor %}
+        </p>
+        <p class="password">
+            {{ form.password.label }}<br>
+            {{ form.password(size=45) }}<br>
+            {% for error in form.password.errors %}
+                <p style="color: red;">[{{ error }}]</p>
+            {% endfor %}
+        </p>
+        <p class="password">
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=45) }}<br>
+            {% for error in form.password2.errors %}
+                <p style="color: red;">[{{ error }}]</p>
+            {% endfor %}
+        </p>
+        <p class="submit">{{ form.submit() }}</p>
+    </form>
+</div>
+<footer class="footer footer_registration">
+    <div class="footer_1">
+        <h3><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></h3>
+        <p>This is Photoshop's vesion of Lorem um. sProin gravida nibh vel ivelit aur aliquet. Aenean sollici his a
+            great justo</p>
+        <div></div>
+    </div>
+    <div class="footer_2">
+        <h3><span class="spec_word">QUICK</span>LINKS</h3>
+        <ul>
+            <li><a href=""> Healthcare Programe</a></li>
+            <li><a href=""> Family Treatment</a></li>
+            <li><a href=""> Medical Injuries</a></li>
+            <li><a href=""> Personal Doctor</a></li>
+            <li><a href=""> Operations</a></li>
+        </ul>
+        <div></div>
+    </div>
+    <div class="footer_3">
+        <h3><span class="spec_word">CONTACT</span>US</h3>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255);">⌂</span> Elizabeth St, Melbourne, Victo</p>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255);">✉</span> chynny@vivaldi.net</p>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255)">📱</span>+38-068-382-30-44</p>
+        <p><span style="font-size: 25px; color: rgb(0, 119, 255)">📱</span>+38-068-382-30-44</p>
+    </div>
+    <div class="footer_4">
+        <h3><span class="spec_word">WORKING</span>HOURS</h3>
+        <div>
+            <p>Monday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Tuesday </p>
+            <p>9:00 am - 8:00 pm</p>
+            <p>Wednesday </p>
+            <time>9:00 am - 8:00 pm</time>
+            <p>Thursday </p>
+            <time>9:00 am - 8:00 pm</time>
+            <p>Friday </p>
+            <time>9:00 am - 8:00 pm</time>
+            <p>Saturday </p>
+            <time>9:00 am - 8:00 pm</time>
+        </div>
+    </div>
+    <div class="footer_5">
+        <span>UiFuse.com 2015,All Rights Reserved</span>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact_us.html">Contact us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
