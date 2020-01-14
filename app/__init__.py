@@ -4,9 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from config import Config
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
-db.Model.metadata.reflect(bind=db.engine, shema='patientdb')
 app.config.from_object(Config)
+db = SQLAlchemy(app)
 login = LoginManager(app)
 
 from app import routes, models

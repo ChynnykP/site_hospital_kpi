@@ -1,0 +1,18 @@
+.div_account{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub_div_account{
+    display: grid;
+    padding: 15px;
+    border: 1px solid black;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.footer_account {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+}

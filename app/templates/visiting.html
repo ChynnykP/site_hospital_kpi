@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Medicel</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/visiting.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/cabynet.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/index.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/header.css') }}>
@@ -41,14 +42,58 @@
     <a class="nav_all nav_5" href="pages.html">PAGES</a>
     <a class="nav_6" href="make_appoinment.html">MAKE APPOINTMENT</a>
 </nav>
+<div class="div_visiting">
+    <ul class="account_patient">
+        <li><a href={{ url_for("account") }}>Account</a></li>
+        <li><a href={{ url_for("doctors") }}>My Doctors</a></li>
+        <li><a href={{ url_for("visiting") }}>Visiting</a></li>
+        <li><a href={{ url_for("carta") }}>Carta Patient</a></li>
+    </ul>
+    <div class="sub_div_visiting">
+        <table>
+            <tr>
+                <th>Doctor</th>
+                <th>Time</th>
+            </tr>
 
-<ul class="account_patient">
-    <li><a href={{ url_for("account") }}>Account</a></li>
-    <li><a href={{ url_for("doctors") }}>My Doctors</a></li>
-    <li><a href={{ url_for("visiting") }}>Visiting</a></li>
-    <li><a href={{ url_for("carta") }}>Carta Patient</a></li>
-</ul>
-<footer class="footer footer_cabynet">
+            {% for v in visiting %}
+                <tr>
+                    <td>{{v.first_name }} {{ v.last_name }} ({{ v.branch }})</td>
+                    <td>{{ v.date_visiting }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <form action="" method="post">
+            {{ form.branch }}
+            {{ form.doctor }}
+            {{ form.date }}
+            <input type="submit">
+        </form>
+        <script>
+            let branch_select = document.getElementById("branch");
+            let doctor_select = document.getElementById("doctor");
+
+            branch_select.onchange = function () {
+                branch = branch_select.value;
+
+                fetch('/visiting/' + branch).then(function (response) {
+                    response.json().then(function (data) {
+                        let optionHTML = '';
+
+                        for (let doctor of data.doctors) {
+                            optionHTML += '<option value="' + doctor.idDoctor + '">' + doctor.name + '</option>';
+                        }
+
+                        doctor_select.innerHTML = optionHTML;
+                    })
+                });
+            }
+        </script>
+    </div>
+    <div></div>
+</div>
+
+<footer class="footer footer_visiting">
     <div class="footer_1">
         <h3><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></h3>
         <p>This is Photoshop's vesion of Lorem um. sProin gravida nibh vel ivelit aur aliquet. Aenean sollici his a
