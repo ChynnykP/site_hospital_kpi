@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/section_image.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+    <link rel="stylesheet" href={{ url_for('static', filename='css/swipebox.css') }}>
+
 </head>
 
 <body>
@@ -34,21 +37,21 @@
     <div class="burger-line fourth"></div>
     <nav class="main-menu">
         <a class="elem_menu" href={{ url_for('index') }}>HOME</a>
-        <a class="elem_menu" href="service.html">SERVICES</a>
-        <a class="elem_menu" href="about.html">ABOUT</a>
-        <a class="elem_menu" href="blog.html">BLOG</a>
-        <a class="elem_menu" href="pages.html">PAGES</a>
-        <a class="elem_menu" href="make_appoinment.html">MAKE APPOINTMENT</a>
+        <a class="elem_menu" href="#">SERVICES</a>
+        <a class="elem_menu" href="#">ABOUT</a>
+        <a class="elem_menu" href="#">BLOG</a>
+        <a class="elem_menu" href="#">PAGES</a>
+        <a class="elem_menu" href="#">MAKE APPOINTMENT</a>
     </nav>
 </div>
 <nav class="navigation">
-    <a class="nav_0" href={{ url_for('index') }}><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
-    <a class="nav_all nav_1" href={{ url_for('index') }}>HOME</a>
-    <a class="nav_all nav_2" href="service.html">SERVICES</a>
-    <a class="nav_all nav_3" href="about.html">ABOUT</a>
-    <a class="nav_all nav_4" href="blog.html">BLOG</a>
-    <a class="nav_all nav_5" href="pages.html">PAGES</a>
-    <a class="nav_6" href="make_appoinment.html">MAKE APPOINTMENT</a>
+    <a class="nav_0" href={{ url_for("index") }}><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
+    <a class="nav_all nav_1" href={{ url_for("index") }}>HOME</a>
+    <a class="nav_all nav_2" href="#">SERVICES</a>
+    <a class="nav_all nav_3" href="#">ABOUT</a>
+    <a class="nav_all nav_4" href="#">BLOG</a>
+    <a class="nav_all nav_5" href="#">PAGES</a>
+    <a class="nav_6" href="#">MAKE APPOINTMENT</a>
 </nav>
 <section class="section_introduction">
     <p class="title sec_1">WE PROVIDE</p>
@@ -89,66 +92,67 @@
         <hr>
         Speacial Chech up
     </div>
-{#    <form class="box7 form">#}
-{#        <h2>make an appoinment</h2>#}
-{#        <h5>fill form & send me</h5>#}
-{#        <select name="region" value="Select country">#}
-{#            <option value="Kyiv">Kyiv</option>#}
-{#            <option value="Cherkasy">Cherkasy</option>#}
-{#            <option value="Zhytomyr">Zhytomyr</option>#}
-{#            <option value="Rivne">Rivne</option>#}
-{#            <option value="Volynska">Volynska</option>#}
-{#            <option value="Lviv">Lviv</option>#}
-{#            <option value="Zaporizhia">Zaporizhia</option>#}
-{#        </select>#}
-{#        <select name="service" value="Select service">#}
-{#            <option value="Dentist">Dentist</option>#}
-{#            <option value="Otolaryngologist">Otolaryngologist</option>#}
-{#            <option value="Therapist">Therapist</option>#}
-{#            <option value="The addict">The addict</option>#}
-{#            <option value="Psychologist">Psychologist</option>#}
-{#            <option value="Neurologist">Neurologist</option>#}
-{#            <option value="Cardiologist">Cardiologist</option>#}
-{#        </select>#}
-{#        <select name="doctor" value="Select doctor">#}
-{#            <option value="Orlov">Orlov</option>#}
-{#            <option value="Petrov">Petrov</option>#}
-{#            <option value="Ivanov">Ivanov</option>#}
-{#            <option value="Chuyko">Chuyko</option>#}
-{#            <option value="Shurik">Shurik</option>#}
-{#            <option value="Hayduk">Hayduk</option>#}
-{#            <option value="Mozhyn">Mozhyn</option>#}
-{#        </select>#}
-{#        <input value="Choose date" pattern="Select time" type="date">#}
-{#        <input type="time" value="Select time">#}
-{#        <p>All Fields With an Are Requiremed ***</p>#}
-{#        <button>submit toy requirements</button>#}
-{#    </form>#}
+    {% if not current_user.is_anonymous %}
+        <form class="box7 form" action="/forward/" method="post">
+            <h2>make an appoinment</h2>
+            <h5>fill form & send me</h5>
+            {{ form.region }}
+            {{ form.branch }}
+            {{ form.doctor }}
+            <input value="Choose date" pattern="Select time" type="date" name="date">
+            <input type="time" value="Select time" name="time">
+            <p>All Fields With an Are Requiremed ***</p>
+            <button name="forwardBtn" type="submit">submit toy requirements</button>
+        </form>
+        <script>
+            let branch_select = document.getElementById("branch");
+            let doctor_select = document.getElementById("doctor");
+
+            branch_select.onchange = function () {
+                branch = branch_select.value;
+
+                fetch('/index/' + branch).then(function (response) {
+                    response.json().then(function (data) {
+                        let optionHTML = '';
+
+                        for (let doctor of data.doctors) {
+                            optionHTML += '<option value="' + doctor.idDoctor + '">' + doctor.name + '</option>';
+                        }
+
+                        doctor_select.innerHTML = optionHTML;
+                    })
+                });
+            }
+        </script>
+    {% endif %}
 </section>
 <section class="section_image">
-    <div>
+    <div class="back">
         <p><span class="spec_word">HEALTH</span> CARE PROJECTS</p>
         <hr>
-        <ul>
-            <li>All</li>
-            <li>PROJECTS</li>
-            <li>HEALTHCARE</li>
-            <li>OPERATIONS</li>
-            <li>DRUGS SOLTIONS</li>
-        </ul>
         <div class="photo">
-            <div class="div_1"></div>
-            <div class="div_2"></div>
-            <div class="div_3"></div>
-            <div class="div_4"></div>
-            <div class="div_5"></div>
-            <dvi class="div_6"></dvi>
-            <div class="div_7"></div>
-            <div class="div_8"></div>
-            <div class="div_9"></div>
-            <div class="div_0"></div>
+            <div class="div_1"><a href={{ url_for('static', filename='img/dentist.jpg') }} class="swipebox">
+                <img src={{ url_for('static', filename='img/dentist.jpg') }}></a></div>
+            <div class="div_2"><a href={{ url_for('static', filename='img/doctor.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/doctor.jpg') }}></a></div>
+            <div class="div_3"><a href={{ url_for('static', filename='img/operation.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/operation.jpg') }}></a></div>
+            <div class="div_4"><a href={{ url_for('static', filename='img/psyholoh.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/psyholoh.jpg') }}></a></div>
+            <div class="div_5"><a href={{ url_for('static', filename='img/doctor_1.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/doctor_1.jpg') }}></a></div>
+            <dvi class="div_6"><a href={{ url_for('static', filename='img/labor.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/labor.jpg') }}></a></dvi>
+            <div class="div_7"><a href={{ url_for('static', filename='img/hirug.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/hirug.jpg') }}></a></div>
+            <div class="div_8"><a href={{ url_for('static', filename='img/lor.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/lor.jpg') }}></a></div>
+            <div class="div_9"><a href={{ url_for('static', filename='img/laborant.jpeg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/laborant.jpeg') }}></a></div>
+            <div class="div_0"><a href={{ url_for('static', filename='img/labor.jpg') }} class="swipebox">
+            <img src={{ url_for('static', filename='img/labor.jpg') }}></a></div>
         </div>
-        <button class="button">ALL PROJECTS</button>
+
     </div>
 </section>
 <article class="article">
@@ -165,7 +169,7 @@
     </div>
     <div class="art_4">
         <h3><span class="spec_word">VIDEO</span> INTRODUCTION</h3>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/upTj79dRmZk" frameborder="0"
+        <iframe src="https://www.youtube.com/embed/upTj79dRmZk" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
         <div></div>
@@ -228,14 +232,23 @@
     <div class="footer_5">
         <span>UiFuse.com 2015,All Rights Reserved</span>
         <div>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact_us.html">Contact us</a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact us</a>
         </div>
     </div>
 </footer>
 
+<script src={{ url_for('static', filename='js/jquery-2.1.0.min.js') }}></script>
+<script src={{ url_for('static', filename='js/jquery.swipebox.js') }}></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        /* Basic Gallery */
+        $('.swipebox').swipebox();
+    });
+</script>
 </body>
 
 </html>

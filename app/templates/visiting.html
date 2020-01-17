@@ -9,6 +9,7 @@
     <link rel="stylesheet" href={{ url_for('static', filename='css/header.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/nav.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/footer.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/section_main.css') }}>
 </head>
 <body>
 <header class="header">
@@ -26,21 +27,21 @@
     <div class="burger-line fourth"></div>
     <nav class="main-menu">
         <a class="elem_menu" href={{ url_for('index') }}>HOME</a>
-        <a class="elem_menu" href="service.html">SERVICES</a>
-        <a class="elem_menu" href="about.html">ABOUT</a>
-        <a class="elem_menu" href="blog.html">BLOG</a>
-        <a class="elem_menu" href="pages.html">PAGES</a>
-        <a class="elem_menu" href="make_appoinment.html">MAKE APPOINTMENT</a>
+        <a class="elem_menu" href="#">SERVICES</a>
+        <a class="elem_menu" href="#">ABOUT</a>
+        <a class="elem_menu" href="#">BLOG</a>
+        <a class="elem_menu" href="#">PAGES</a>
+        <a class="elem_menu" href="#">MAKE APPOINTMENT</a>
     </nav>
 </div>
 <nav class="navigation">
-    <a class="nav_0" href={{ url_for('index') }}><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
-    <a class="nav_all nav_1" href={{ url_for('index') }}>HOME</a>
-    <a class="nav_all nav_2" href="service.html">SERVICES</a>
-    <a class="nav_all nav_3" href="about.html">ABOUT</a>
-    <a class="nav_all nav_4" href="blog.html">BLOG</a>
-    <a class="nav_all nav_5" href="pages.html">PAGES</a>
-    <a class="nav_6" href="make_appoinment.html">MAKE APPOINTMENT</a>
+    <a class="nav_0" href={{ url_for("index") }}><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
+    <a class="nav_all nav_1" href={{ url_for("index") }}>HOME</a>
+    <a class="nav_all nav_2" href="#">SERVICES</a>
+    <a class="nav_all nav_3" href="#">ABOUT</a>
+    <a class="nav_all nav_4" href="#">BLOG</a>
+    <a class="nav_all nav_5" href="#">PAGES</a>
+    <a class="nav_6" href="#">MAKE APPOINTMENT</a>
 </nav>
 <div class="div_visiting">
     <ul class="account_patient">
@@ -58,16 +59,24 @@
 
             {% for v in visiting %}
                 <tr>
-                    <td>{{v.first_name }} {{ v.last_name }} ({{ v.branch }})</td>
+                    <td>{{ v.first_name }} {{ v.last_name }} ({{ v.branch }})</td>
                     <td>{{ v.date_visiting }}</td>
                 </tr>
             {% endfor %}
         </table>
-        <form action="" method="post">
+    </div>
+
+    <div>
+        <form class="visiting_form form" action="/forward/" method="post">
+            <h2>make an appoinment</h2>
+            <h5>fill form & send me</h5>
+            {{ form.region }}
             {{ form.branch }}
             {{ form.doctor }}
-            {{ form.date }}
-            <input type="submit">
+            <input value="Choose date" pattern="Select time" type="date" name="date">
+            <input type="time" value="Select time" name="time">
+            <p>All Fields With an Are Requiremed ***</p>
+            <button name="forwardBtn" type="submit">submit toy requirements</button>
         </form>
         <script>
             let branch_select = document.getElementById("branch");
@@ -90,7 +99,6 @@
             }
         </script>
     </div>
-    <div></div>
 </div>
 
 <footer class="footer footer_visiting">
@@ -138,10 +146,10 @@
     <div class="footer_5">
         <span>UiFuse.com 2015,All Rights Reserved</span>
         <div>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact_us.html">Contact us</a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact us</a>
         </div>
     </div>
 </footer>

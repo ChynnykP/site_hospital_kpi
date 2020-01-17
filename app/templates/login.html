@@ -18,28 +18,28 @@
 </header>
 <div class="wrapper">
     <input type="checkbox" id="check-menu">
-    <label for="check-menu"></label>
+    <label class="for_wrapper" for="check-menu"></label>
     <div class="burger-line first"></div>
     <div class="burger-line second"></div>
     <div class="burger-line third"></div>
     <div class="burger-line fourth"></div>
     <nav class="main-menu">
-        <a class="elem_menu" href="home.html">HOME</a>
-        <a class="elem_menu" href="service.html">SERVICES</a>
-        <a class="elem_menu" href="about.html">ABOUT</a>
-        <a class="elem_menu" href="blog.html">BLOG</a>
-        <a class="elem_menu" href="pages.html">PAGES</a>
-        <a class="elem_menu" href="make_appoinment.html">MAKE APPOINTMENT</a>
+        <a class="elem_menu" href={{ url_for('index') }}>HOME</a>
+        <a class="elem_menu" href="#">SERVICES</a>
+        <a class="elem_menu" href="#">ABOUT</a>
+        <a class="elem_menu" href="#">BLOG</a>
+        <a class="elem_menu" href="#">PAGES</a>
+        <a class="elem_menu" href="#">MAKE APPOINTMENT</a>
     </nav>
 </div>
 <nav class="navigation">
-    <a class="nav_0" href="home.html"><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
+    <a class="nav_0" href={{ url_for("index") }}><span class="spec_word">M</span>EDICAL<span class="spec_word">+</span></a>
     <a class="nav_all nav_1" href={{ url_for("index") }}>HOME</a>
-    <a class="nav_all nav_2" href="service.html">SERVICES</a>
-    <a class="nav_all nav_3" href="about.html">ABOUT</a>
-    <a class="nav_all nav_4" href="blog.html">BLOG</a>
-    <a class="nav_all nav_5" href="pages.html">PAGES</a>
-    <a class="nav_6" href="make_appoinment.html">MAKE APPOINTMENT</a>
+    <a class="nav_all nav_2" href="#">SERVICES</a>
+    <a class="nav_all nav_3" href="#">ABOUT</a>
+    <a class="nav_all nav_4" href="#">BLOG</a>
+    <a class="nav_all nav_5" href="#">PAGES</a>
+    <a class="nav_6" href="#">MAKE APPOINTMENT</a>
 </nav>
 <div class="form">
     <h1>Sign In</h1>
@@ -109,10 +109,10 @@
     <div class="footer_5">
         <span>UiFuse.com 2015,All Rights Reserved</span>
         <div>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact_us.html">Contact us</a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact us</a>
         </div>
     </div>
 </footer>

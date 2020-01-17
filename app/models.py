@@ -88,3 +88,9 @@ class DoctorInsertDiseases(db.Model):
 
     def __repr__(self):
         return f'{self.Doctor_idDoctor} {self.Diseases_idDiseases}'
+
+class City(db.Model):
+    __table__ = db.Model.metadata.tables['patientdb.city']
+
+    def __repr__(self):
+        return f'{self.idCity} {self.name}'

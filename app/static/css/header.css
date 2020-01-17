@@ -1,169 +1,140 @@
 .header {
+  display: grid;
+  grid-template-columns: 10% 35% 25% 15% 7.5% 7.5%;
+  grid-template-rows: 1fr;
+  grid-template-areas: ". header_1 . header_2 register login";
+  background-color: #c5c3c3;
+}
+.header span {
+  padding: 15px;
+}
+.header .header_1 {
+  padding-top: 20px;
+  grid-area: header_1;
+}
+.header .header_2 {
+  padding-left: 25px;
+  grid-area: header_2;
+}
+.header .header_2 span {
+  font-size: 25px;
+}
+.header a:link {
+  margin: 0px;
+  padding: 21px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.header a:visited {
+  color: black;
+}
+.header a:hover {
+  text-align: center;
+  text-decoration: none;
+  background-color: #0066ff;
+  color: white;
+}
+.header a:link.login {
+  text-align: center;
+  text-decoration: none;
+  background-color: #0077ff;
+  color: white;
+}
+.header a:visited.login {
+  text-align: center;
+  text-decoration: none;
+  background-color: #0077ff;
+  color: white;
+}
+.header a:hover.login {
+  text-align: center;
+  text-decoration: none;
+  background-color: #0066ff;
+  color: white;
+}
+.register {
+  grid-area: register;
+}
+.my_cabynet {
+  grid-area: register;
+}
+.login {
+  grid-area: login;
+}
+@media (max-width: 1600px) {
+  .header {
     display: grid;
-    grid-template-columns: 10% 35%  25% 15% 7.5% 7.5%;
+    grid-template-columns: 10% 35% 20% 20% 7.5% 7.5%;
     grid-template-rows: 1fr;
-    grid-template-areas: 
-    ". header_1 . header_2 register login";
-    background-color:#c5c3c3;
+    grid-template-areas: ". header_1 . header_2 register login";
+    background-color: #c5c3c3;
+  }
 }
-
-header.header span{
-    padding: 15px;
+@media (max-width: 1500px) {
+  .header {
+    grid-template-columns: 7% 35% 20% 20% 10.5% 7.5%;
+    grid-template-rows: 1fr;
+    grid-template-areas: ". header_1 . header_2 register login";
+  }
 }
-
-.header > .header_1{
-    padding-top: 20px;
-    grid-area: header_1;
+@media (max-width: 1200px) {
+  .header {
+    grid-template-columns: 6% 35% 20% 21% 10.5% 7.5%;
+    grid-template-rows: 1fr;
+    grid-template-areas: ". header_1 . header_2 register login";
+  }
 }
-
-.header > .header_2{
-    padding-left: 25px;
-    grid-area: header_2;
+@media (max-width: 1100px) {
+  .header {
+    grid-template-columns: 3% 37% 15% 24% 11.5% 9.5%;
+    grid-template-rows: 1fr;
+    grid-template-areas: ". header_1 . header_2 register login";
+  }
 }
-
-header.header>.header_2>span{
-    font-size: 25px;
+@media (max-width: 1000px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
 }
-
-.register{
-    grid-area: register;
+@media (max-width: 869px) {
+  .header_1 {
+    display: none;
+  }
+  /*.header {*/
+  /*    display: grid;*/
+  /*    grid-template-columns: 1fr 2fr 1fr 1fr;*/
+  /*    grid-template-rows: 1fr;*/
+  /*    grid-template-areas: */
+  /*    "header_2 . register login";*/
+  /*}*/
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
 }
-
-.my_cabynet{
-    grid-area: register;
+@media (max-width: 550px) {
+  .header_1 {
+    display: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
 }
-
-.login{
-    grid-area: login;
+@media (max-width: 490px) {
+  .header_1 .header_2 {
+    display: none;
+  }
+  .header_2 {
+    display: none;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: ". register login";
+  }
 }
-
-.header > a:link{
-    margin: 0px;
-    padding: 21px;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-}
-
-.header > a:visited{
-    color: black;
-}
-
-.header > a:hover{
-    text-align: center;
-    text-decoration: none; 
-    background-color: rgb(0, 102, 255);
-    color: white;
-}
-
-.header > a:link.login{
-    text-align: center;
-    text-decoration: none;
-    background-color: rgb(0, 119, 255);
-    color: white;
-}
-
-.header > a:visited.login{
-    text-align: center;
-    text-decoration: none; 
-    background-color: rgb(0, 119, 255);
-    color: white;
-}
-
-.header > a:hover.login{
-    text-align: center;
-    text-decoration: none; 
-    background-color: rgb(0, 102, 255);
-    color: white;
-}
-
- @media(max-width: 1600px){
-    .header {
-        display: grid;
-        grid-template-columns: 10% 35% 20% 20% 7.5% 7.5%;
-        grid-template-rows: 1fr;
-        grid-template-areas: 
-        ". header_1 . header_2 register login";
-        background-color:#c5c3c3;
-    }
-}
-
-@media (max-width: 1500px){
-    .header{
-        grid-template-columns: 7% 35% 20% 20% 10.5% 7.5%;
-        grid-template-rows: 1fr;
-        grid-template-areas: 
-        ". header_1 . header_2 register login";
-    }
-}
-
-@media (max-width: 1200px){
-    .header{
-        grid-template-columns: 6% 35% 20% 21% 10.5% 7.5%;
-        grid-template-rows: 1fr;
-        grid-template-areas: 
-        ". header_1 . header_2 register login";
-    }
-}
-
-@media (max-width: 1100px){
-    .header{
-        grid-template-columns: 3% 37% 15% 24% 11.5% 9.5%;
-        grid-template-rows: 1fr;
-        grid-template-areas: 
-        ". header_1 . header_2 register login";
-    }
-}
-
-
-
-
-@media (max-width: 1000px){
-    .header{
-        display: flex;
-        justify-content: space-between;
-    }
-}
-
-@media (max-width: 869px){
-    .header_1  {
-        display: none;
-    }
-    /*.header {*/
-    /*    display: grid;*/
-    /*    grid-template-columns: 1fr 2fr 1fr 1fr;*/
-    /*    grid-template-rows: 1fr;*/
-    /*    grid-template-areas: */
-    /*    "header_2 . register login";*/
-    /*}*/
-    .header {
-        display: flex;
-        justify-content: space-between;
-    }
-}
-
-@media (max-width: 550px){
-    .header_1  {
-        display: none;
-    }
-    .header {
-        display: flex;
-        justify-content: space-between;
-    }
-}
-
-@media (max-width: 490px){
-    .header_1 .header_2 {
-        display: none;
-    }
-    .header_2{
-        display: none;  
-    }
-    .header {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        grid-template-areas: 
-        ". register login";
-    }
-}
+/*# sourceMappingURL=header.css.map */

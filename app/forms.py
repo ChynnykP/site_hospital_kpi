@@ -26,7 +26,14 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email.')
 
 class VisitingForm(FlaskForm):
+    region = SelectField("Region", choices=[])
     branch = SelectField("Branch", choices=[])
     doctor = SelectField("Doctor", choices=[])
-    date = DateTimeField("Date")
+    date = DateTimeField("Date", format='%Y-%m-%d %h:%m:%s')
     submit = SubmitField("Submit")
+
+class IndexForm(FlaskForm):
+    region = SelectField("Region", choices=[])
+    branch = SelectField("Branch", choices=[])
+    doctor = SelectField("Doctor", choices=[])
+

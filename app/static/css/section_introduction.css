@@ -1,59 +1,53 @@
-.section_introduction{
-    display: grid;
-    grid-template-columns: 8% 1fr 2fr;
-    grid-template-rows: 1fr 1fr 2fr 1fr;
-    grid-template-areas: 
-    ". sec_1 ."
-    ". sec_2 ."
-    ". sec_3 ."
-    ". sec_4 .";
-    background: url(../img/backgrount_for_section.jpg) no-repeat;
-    background-position: top;
-    background-size: cover;
+.section_introduction {
+  display: grid;
+  grid-template-columns: 8% 1fr 2fr;
+  grid-template-rows: 1fr 1fr 2fr 1fr;
+  grid-template-areas: ". sec_1 ." ". sec_2 ." ". sec_3 ." ". sec_4 .";
+  background: url(../img/backgrount_for_section.jpg) no-repeat;
+  background-position: top;
+  background-size: cover;
 }
-
-.sec_1{
-    grid-area: sec_1;
+.sec_1 {
+  grid-area: sec_1;
 }
-
-.sec_2{
-    grid-area: sec_2;
+.sec_2 {
+  grid-area: sec_2;
 }
-
-.sec_3{
-    grid-area: sec_3;
+.sec_3 {
+  grid-area: sec_3;
 }
-
-.sec_4{
-    grid-area: sec_4;
+.sec_4 {
+  grid-area: sec_4;
 }
-
 .section_introduction p {
-    font-size: 25px;
-    color: rgba(128, 128, 128, 0.945);
+  font-size: 25px;
+  color: rgba(128, 128, 128, 0.945);
 }
-
 .section_introduction p.title {
-    font-weight: bold;
-    font-size: 65px;
-    color:  rgb(0, 119, 255);
+  font-weight: bold;
+  font-size: 65px;
+  color: #0077ff;
 }
-
 .section_introduction p.sub-title {
-    font-weight: bold;
-    font-size: 45px;
-    color: rgb(83, 83, 83);
+  font-weight: bold;
+  font-size: 45px;
+  color: #535353;
 }
-
-.section_introduction .button{
-    background-color: rgb(0, 119, 255);
-    border: none;
-    color: white;
-    font-size: 25px;
-    /* height: 10%;*/
-    width: 50%; 
+.section_introduction .button {
+  background-color: #0077ff;
+  border: none;
+  color: white;
+  font-size: 25px;
+  /* height: 10%;*/
+  width: 50%;
 }
-.section_introduction .button:hover{
-    background-color: rgb(0, 102, 255);
-    cursor: pointer;
+.section_introduction .button:hover {
+  background-color: #0066ff;
+  cursor: pointer;
 }
+@media (max-width: 1000px) {
+  .section_introduction .button {
+    width: 75%;
+  }
+}
+/*# sourceMappingURL=section_introduction.css.map */

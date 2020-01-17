@@ -1,18 +1,49 @@
 from flask import render_template, flash, redirect, url_for, jsonify, request
 from app import app
 from app import db
-from app.forms import LoginForm, RegistrationForm, VisitingForm
+from app.forms import LoginForm, RegistrationForm, VisitingForm, IndexForm
 from flask_login import current_user, login_user, logout_user
 from datetime import datetime
 from app.models import Patient, Doctor, Diseases, Medicine, PatientHasDoctor, PatientHasDiseases, PatientHasMedicine, \
-    DoctorInsertDiseases, Visiting
+    DoctorInsertDiseases, Visiting, City
 
 
-@app.route('/')
-@app.route('/index')
+class TmpIndex:
+    def __init__(self, region, service, doctor, date, time):
+        self.region = region
+        self.service = service
+        self.doctor = doctor
+        self.date = date
+        self.time = time
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = VisitingForm()
+    form.region.choices = [(city.name, city.name) for city in City.query.distinct().all()]
+    form.branch.choices = [(branch.branch, branch.branch) for branch in Doctor.query.distinct().all()]
+    form.doctor.choices = [(doctor.idDoctor, f'{doctor.first_name} {doctor.last_name}') for doctor in
+                           Doctor.query.filter_by(branch="therapist").all()]
+    return render_template('index.html', form=form)
 
+@app.route('/forward/', methods=["POST"])
+def forward():
+    # breakpoint()
+    region = request.form.get('region')
+    branch = request.form.get('branch')
+    doctor = request.form.get('doctor')
+    date = request.form.get('date')
+    time = request.form.get('time')
+    name_doctor = doctor.split()
+    city = City.query.filter_by(name=region).all()
+    visiting = Visiting(date_visiting = date + ' ' + time,
+                        Patient_idPatient=current_user.idPatient,
+                        Doctor_idDoctor=doctor, City_idCity=city[0].idCity)
+    doctor = PatientHasDoctor(Patient_idPatient=current_user.idPatient, Doctor_idDoctor=doctor)
+    db.session.add(visiting)
+    db.session.add(doctor)
+    db.session.commit()
+    return redirect(url_for('visiting'))
 
 @app.route('/login.html', methods=['GET', 'POST'])
 def login():
@@ -78,6 +109,7 @@ def visiting():
     if current_user.is_anonymous:
         return redirect(url_for('index'))
     form = VisitingForm()
+    form.region.choices = [(city.name, city.name) for city in City.query.distinct().all()]
     form.branch.choices = [(branch.branch, branch.branch) for branch in Doctor.query.distinct().all()]
     form.doctor.choices = [(doctor.idDoctor, f'{doctor.first_name} {doctor.last_name}') for doctor in
                            Doctor.query.filter_by(branch="therapist").all()]
@@ -96,6 +128,19 @@ def visiting():
     return render_template('visiting.html', form=form, visiting=v)
 
 
+@app.route('/index/<branch>')
+def select_doctor_index(branch):
+    doctor = Doctor.query.filter_by(branch=branch).all()
+
+    list_doctor = []
+
+    for d in doctor:
+        doctorObj = {}
+        doctorObj['idDoctor'] = d.idDoctor
+        doctorObj['name'] = d.first_name + ' ' + d.last_name
+        list_doctor.append(doctorObj)
+
+    return jsonify({'doctors': list_doctor})
 @app.route('/visiting/<branch>')
 def select_doctor(branch):
     if current_user.is_anonymous:
